@@ -50,7 +50,7 @@ class PostGridTile extends StatelessWidget {
             child: Row(children: [SizedBox(width: 4)]),
           ),
 
-          if (mainRatio < 1)
+          if (post.targetProfileId == 'myself')
             Positioned(
               top: 8,
               left: 8,
