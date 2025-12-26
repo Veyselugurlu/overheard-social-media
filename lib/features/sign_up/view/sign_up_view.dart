@@ -30,10 +30,6 @@ class SignUpView extends StatelessWidget {
                 (route) => false,
               );
             }
-          } else if (state is SignUpError) {
-            if (context.mounted) {
-              // Navigator.pop(context);
-            }
           }
         },
         child: _buildBody(context),
