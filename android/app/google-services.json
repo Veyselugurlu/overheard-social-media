@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1171336226",
+    "project_id": "overheard-afa00",
+    "storage_bucket": "overheard-afa00.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1171336226:android:de57762e87716b8d352e7b",
+        "android_client_info": {
+          "package_name": "com.example.overheard"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBQPDAKvbCniVUVnJp9L-5lWq5Sdh8CT90"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
