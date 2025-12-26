@@ -170,7 +170,6 @@ class PostDetailCubit extends Cubit<PostDetailState> {
       return;
     }
     try {
-      //Önce UI'ı anında güncelle
       final currentPost = currentState.post;
       final isAdding =
           flagType == 'greenFlag'
@@ -203,7 +202,7 @@ class PostDetailCubit extends Cubit<PostDetailState> {
 
       emit(currentState.copyWith(post: updatedPost));
 
-      // Arka planda veritabanını güncelle notfiicaiton için
+      // Arka planda veritabanını güncelledik notfiicaiton için
       await shareRepository.toggleFlag(postId: postId, flagType: flagType);
       if (isAdding && currentState.post.userId != userId) {
         final currentUserName = await shareRepository.getCurrentUserName();

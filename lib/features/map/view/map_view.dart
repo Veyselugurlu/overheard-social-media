@@ -41,7 +41,7 @@ class MapView extends StatelessWidget {
                             height: 60,
                             child: GestureDetector(
                               onTap: () => _showPostPreview(context, post),
-                              child: buildUserMarker(post.photoUrl),
+                              child: UserMarkerWidget(photoUrl: post.photoUrl),
                             ),
                           );
                         })

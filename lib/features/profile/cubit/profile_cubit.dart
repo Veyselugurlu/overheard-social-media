@@ -23,22 +23,18 @@ class ProfileCubit extends Cubit<ProfileState> {
     }
 
     try {
-      //  Kullanıcı dökümanını (savedPosts listesini) canlı dinle
       _userSubscription?.cancel();
       _userSubscription = _repository.listenToUser(currentUserId).listen((
         user,
       ) async {
         if (user == null) return;
 
-        // Kaydedilen postları güncel ID'lere göre çek
         final savedPosts = await _repository.fetchSavedPosts(user.savedPosts);
 
-        // Kendi postlarını dinle (Eğer henüz başlamadıysa)
         if (_postsSubscription == null) {
           _postsSubscription = _repository
               .listenToUserPosts(currentUserId)
               .listen((myPosts) {
-                // Veriler geldiğinde yükleme ekranını kapat ve listeyi göster
                 emit(
                   ProfileLoaded(
                     user: user,
@@ -48,15 +44,13 @@ class ProfileCubit extends Cubit<ProfileState> {
                 );
               });
         } else {
-          //  Sayfa zaten açıksa, sadece listeyi yenile
-          // Kullanıcı beyaz ekran görmez, post anında çıkar.
           if (state is ProfileLoaded) {
             final currentState = state as ProfileLoaded;
             emit(
               ProfileLoaded(
                 user: user,
-                posts: currentState.posts, // Kendi postlarını koru
-                savedPosts: savedPosts, // Yeni kaydedilenleri bas
+                posts: currentState.posts,
+                savedPosts: savedPosts,
               ),
             );
           }
@@ -67,7 +61,6 @@ class ProfileCubit extends Cubit<ProfileState> {
     }
   }
 
-  // Profil fotoğrafı güncellendiğinde state'i yenilemek için:
   Future<void> updateProfileImage(File imageFile) async {
     try {
       await _repository.updateProfilePhoto(imageFile);
@@ -84,7 +77,7 @@ class ProfileCubit extends Cubit<ProfileState> {
     _postsSubscription?.cancel();
     _userSubscription = null;
     _postsSubscription = null;
-    emit(ProfileInitial()); // State'i tamamen sıfırlar
+    emit(ProfileInitial());
   }
 
   @override

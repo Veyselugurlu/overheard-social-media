@@ -23,7 +23,7 @@ class ProfileHeaderWidget extends StatelessWidget {
         children: [
           Row(
             children: [
-              buildAvatar(context),
+              const ProfileAvatar(),
               const SizedBox(width: 20),
               Expanded(
                 child: ProfileStatSection(user: user, postsCount: postsCount),

@@ -17,17 +17,16 @@ class ProfileStatSection extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
-        buildStatColumn(context, postsCount.toString(), 'Posts'),
-        buildStatColumn(
-          context,
-          user.followingCount.toString(),
-          'Following',
+        StatColumn(count: postsCount.toString(), label: 'Posts'),
+
+        StatColumn(
+          count: user.followingCount.toString(),
+          label: 'Following',
           ids: user.following,
         ),
-        buildStatColumn(
-          context,
-          user.followersCount.toString(),
-          'Followers',
+        StatColumn(
+          count: user.followersCount.toString(),
+          label: 'Followers',
           ids: user.followers,
         ),
       ],
