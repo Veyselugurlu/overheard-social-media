@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:overheard/product/constants/poduct_border_radius.dart';
+import 'package:overheard/product/constants/product_colors.dart';
 
 class ActionTile extends StatelessWidget {
   final IconData icon;
@@ -19,7 +21,10 @@ class ActionTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+      color: ProductColors.instance.white,
+      shape: RoundedRectangleBorder(
+        borderRadius: ProductBorderRadius.circularLow(),
+      ),
       elevation: 2,
       child: ListTile(
         contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),

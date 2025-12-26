@@ -7,6 +7,7 @@ import 'package:overheard/features/settings/widgets/profile_info_card.dart';
 import 'package:overheard/features/settings/widgets/settings_cards.dart';
 import 'package:overheard/features/settings/widgets/update_profile_bottom_sheet.dart';
 import 'package:overheard/product/constants/product_colors.dart';
+import 'package:overheard/product/constants/product_padding.dart';
 import 'package:overheard/product/util/custom_dialogs.dart';
 
 class SettingsView extends StatelessWidget {
@@ -57,6 +58,7 @@ class SettingsView extends StatelessWidget {
           return Scaffold(
             appBar: AppBar(
               title: const Text('Settings'),
+              centerTitle: true,
               backgroundColor: ProductColors.instance.white,
               elevation: 0.5,
               leading: IconButton(
@@ -67,9 +69,9 @@ class SettingsView extends StatelessWidget {
                 onPressed: () => Navigator.pop(context),
               ),
             ),
-            backgroundColor: ProductColors.instance.grey100,
+            backgroundColor: ProductColors.instance.white,
             body: SingleChildScrollView(
-              padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 16),
+              padding: const ProductPadding.allMedium(),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [

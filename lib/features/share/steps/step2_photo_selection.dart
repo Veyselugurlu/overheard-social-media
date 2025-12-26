@@ -3,8 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:overheard/features/share/cubit/share_creation_cubit.dart';
 import 'package:overheard/features/share/cubit/share_form_state.dart';
+import 'package:overheard/product/constants/poduct_border_radius.dart';
 import 'package:overheard/product/constants/product_colors.dart';
 import 'package:overheard/product/constants/product_padding.dart';
+import 'package:overheard/product/util/custom_sized_box.dart';
 import 'package:overheard/product/widget/custom_continue_button.dart';
 
 class Step2ImageSelection extends StatelessWidget {
@@ -29,9 +31,11 @@ class Step2ImageSelection extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    "Select a Photo/Video",
-                    style: Theme.of(context).textTheme.headlineMedium,
+                  Center(
+                    child: Text(
+                      "Select a Photo/Video",
+                      style: Theme.of(context).textTheme.headlineMedium,
+                    ),
                   ),
                   const SizedBox(height: 30),
 
@@ -45,7 +49,7 @@ class Step2ImageSelection extends StatelessWidget {
                             isImageSelected
                                 ? Colors.transparent
                                 : ProductColors.instance.black,
-                        borderRadius: BorderRadius.circular(16),
+                        borderRadius: ProductBorderRadius.circularHigh(),
                         border: Border.all(
                           color: ProductColors.instance.tynantBlue,
                           width: 2,
@@ -55,7 +59,8 @@ class Step2ImageSelection extends StatelessWidget {
                       child:
                           isImageSelected
                               ? ClipRRect(
-                                borderRadius: BorderRadius.circular(14),
+                                borderRadius:
+                                    ProductBorderRadius.circularHigh(),
                                 child: Image.file(
                                   File(selectedPath), // Seçilen resmi göster
                                   fit: BoxFit.cover,
@@ -71,7 +76,7 @@ class Step2ImageSelection extends StatelessWidget {
                                     color: ProductColors.instance.white,
                                     size: 40,
                                   ),
-                                  const SizedBox(height: 10),
+                                  CustomSizedBox.getMedium05Seperator(context),
                                   Text(
                                     "Tap to select from Gallery",
                                     style: Theme.of(

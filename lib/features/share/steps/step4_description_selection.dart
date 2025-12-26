@@ -4,8 +4,10 @@ import 'package:overheard/features/home/cubit/home_cubit.dart';
 import 'package:overheard/features/navigation/cubit/navigation_cubit.dart';
 import 'package:overheard/features/share/cubit/share_creation_cubit.dart';
 import 'package:overheard/features/share/cubit/share_form_state.dart';
+import 'package:overheard/product/constants/poduct_border_radius.dart';
 import 'package:overheard/product/constants/product_colors.dart';
 import 'package:overheard/product/constants/product_padding.dart';
+import 'package:overheard/product/util/custom_sized_box.dart';
 import 'package:overheard/product/widget/custom_continue_button.dart';
 
 class Step4DescriptionSelection extends StatelessWidget {
@@ -41,7 +43,7 @@ class Step4DescriptionSelection extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Text(
                     "Share your story",
@@ -57,13 +59,14 @@ class Step4DescriptionSelection extends StatelessWidget {
                       ),
                     ),
                   ),
-                  const SizedBox(height: 10),
-
+                  CustomSizedBox.getSmall025Seperator(context),
                   Container(
-                    padding: const ProductPadding.allMedium(),
+                    padding: const ProductPadding.allHigh(),
                     decoration: BoxDecoration(
-                      color: ProductColors.instance.grey100,
-                      borderRadius: BorderRadius.circular(12),
+                      color: ProductColors.instance.yellow.withValues(
+                        alpha: 0.3,
+                      ),
+                      borderRadius: ProductBorderRadius.circularHigh30(),
                     ),
                     child: TextFormField(
                       initialValue: currentDescription,
@@ -91,6 +94,7 @@ class Step4DescriptionSelection extends StatelessWidget {
                         style: Theme.of(context).textTheme.bodySmall!.copyWith(
                           color: ProductColors.instance.grey,
                         ),
+                        textAlign: TextAlign.center,
                       ),
                     ),
                   ),

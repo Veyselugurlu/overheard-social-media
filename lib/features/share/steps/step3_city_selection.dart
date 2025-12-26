@@ -46,14 +46,20 @@ class Step3CitySelection extends StatelessWidget {
                       cityPadding: const ProductPadding.allLow(),
                       cityBoxDecoration: BoxDecoration(
                         color: ProductColors.instance.white,
-                        border: Border.all(color: Colors.blueAccent, width: 2),
+                        border: Border.all(
+                          color: ProductColors.instance.blue,
+                          width: 2,
+                        ),
                         borderRadius: BorderRadius.circular(16),
                       ),
 
                       districtPadding: const ProductPadding.allLow(),
                       districtBoxDecoration: BoxDecoration(
                         color: ProductColors.instance.white,
-                        border: Border.all(color: Colors.blueAccent, width: 2),
+                        border: Border.all(
+                          color: ProductColors.instance.blue,
+                          width: 2,
+                        ),
                         borderRadius: BorderRadius.circular(16),
                       ),
 
@@ -79,7 +85,7 @@ class Step3CitySelection extends StatelessWidget {
                       districtHint: Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 12.0),
                         child: Text(
-                          formData.district ?? "İlçe Seçiniz (Opsiyonel)",
+                          formData.district ?? "İlçe Seçiniz ",
                           style: TextStyle(
                             color: ProductColors.instance.black38,
                           ),

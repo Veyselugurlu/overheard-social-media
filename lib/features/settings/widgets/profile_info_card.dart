@@ -16,13 +16,14 @@ class ProfileInfoCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
+      color: ProductColors.instance.white,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       elevation: 2,
       child: ListTile(
         contentPadding: const EdgeInsets.all(12),
         leading: CircleAvatar(
           radius: 24,
-          child: Icon(Icons.person, color: ProductColors.instance.white),
+          child: Icon(Icons.person, color: ProductColors.instance.tynantBlue),
         ),
         title: Text(
           name,

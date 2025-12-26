@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:geocoding/geocoding.dart';
@@ -85,7 +84,6 @@ class ShareCreationCubit extends Cubit<ShareFormState> {
             longitude: locations.first.longitude,
           ),
         );
-        //   print("Konum Başarıyla Belirlendi: ${locations.first.latitude}");
       }
     } catch (e) {
       debugPrint("Koordinat dönüştürme hatası: $e");

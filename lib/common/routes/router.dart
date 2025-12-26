@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
 import 'package:overheard/common/routes/routes.dart';
 import 'package:overheard/data/models/post_model.dart';
 import 'package:overheard/features/filter/view/filter_view.dart';
 import 'package:overheard/features/notification/view/notification_view.dart';
 import 'package:overheard/features/on_boarding/view/onboarding_view.dart';
-import 'package:overheard/features/post_detail/cubit/post_detail_cubit.dart';
 import 'package:overheard/features/home/view/home_view.dart';
 import 'package:overheard/features/post_detail/view/post_detail_view.dart';
 import 'package:overheard/features/login/view/login_view.dart';
@@ -66,23 +64,9 @@ class AppRouter {
         } else if (args is PostModel) {
           postId = args.id;
         }
-
-        if (postId == null) {
-          return MaterialPageRoute(
-            builder:
-                (_) => const Scaffold(
-                  body: Center(child: Text("Hata: Post ID eksik")),
-                ),
-          );
-        }
-
-        page = BlocProvider(
-          create:
-              (context) =>
-                  locator<PostDetailCubit>()..fetchPostDetails(postId!),
-          child: const PostDetailView(),
+        return MaterialPageRoute(
+          builder: (_) => PostDetailView(postId: postId!),
         );
-        break;
 
       case Routes.navigation:
         page = const NavigationView();

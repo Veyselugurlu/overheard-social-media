@@ -45,6 +45,7 @@ Future<void> main() async {
               BlocProvider(create: (_) => locator<SearchCubit>()),
               BlocProvider(create: (_) => locator<ShareCreationCubit>()),
               BlocProvider(create: (_) => locator<FilterCubit>()),
+
               BlocProvider(
                 create: (_) => locator<SettingsCubit>()..loadSettings(),
               ),
