@@ -77,15 +77,6 @@ class SplashView extends StatelessWidget {
               },
               child: Column(
                 children: [
-                  Text(
-                    "Overheard",
-                    style: TextStyle(
-                      fontSize: ProductTextSize.xLExtraLarge(context),
-                      fontWeight: FontWeight.w800,
-                      color: ProductColors.instance.white,
-                      letterSpacing: 1.5,
-                    ),
-                  ),
                   const SizedBox(height: 25),
 
                   // Modern logo kabuğu
