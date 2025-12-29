@@ -14,6 +14,8 @@ class SettingsCubit extends Cubit<SettingsState> {
   }
 
   Future<void> loadSettings() async {
+    _userSubscription
+        ?.cancel(); // Yeni kullanıcıyı dinlemeden önce eskisini MUTLAKA sustur
     emit(state.copyWith(isLoading: true));
     try {
       final userId = _repository.getCurrentUserId();
@@ -40,15 +42,16 @@ class SettingsCubit extends Cubit<SettingsState> {
   Future<void> signOut() async {
     try {
       await _repository.signOut();
-
+      // Kendi Cubit'imizi resetliyoruz
+      reset();
       locator<ProfileCubit>().reset();
-
       emit(
         state.copyWith(
           actionTye: ActionTyes.warring,
           actionMessage: 'Çıkış yapmak istediğinize emin misiniz?',
         ),
       );
+      emit(const SettingsState());
     } catch (e) {
       emit(state.copyWith(errorMessage: 'Oturum kapanırken bir hatta oluştu.'));
     }
@@ -106,7 +109,13 @@ class SettingsCubit extends Cubit<SettingsState> {
     }
   }
 
-  void clear() {}
+  void reset() {
+    _userSubscription?.cancel();
+    _userSubscription = null;
+    emit(
+      const SettingsState(),
+    ); // State'i başlangıç durumuna döndürür (user = null)
+  }
 
   @override
   Future<void> close() {

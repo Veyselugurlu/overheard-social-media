@@ -36,76 +36,77 @@ class Step4DescriptionSelection extends StatelessWidget {
         final String currentDescription = formData.description;
         const bool isDataValid = true;
 
-        return Padding(
-          padding: const ProductPadding.allHigh(),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Text(
-                    "Share your story",
-                    style: Theme.of(context).textTheme.headlineMedium,
-                  ),
+        return SingleChildScrollView(
+          child: Padding(
+            padding: const ProductPadding.allHigh(),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Text(
+                      "Share your story",
+                      style: Theme.of(context).textTheme.headlineMedium,
+                    ),
 
-                  Align(
-                    alignment: Alignment.centerRight,
-                    child: Text(
-                      "${currentDescription.length}/$maxChars",
-                      style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                        color: ProductColors.instance.grey,
-                      ),
-                    ),
-                  ),
-                  CustomSizedBox.getSmall025Seperator(context),
-                  Container(
-                    padding: const ProductPadding.allHigh(),
-                    decoration: BoxDecoration(
-                      color: ProductColors.instance.yellow.withValues(
-                        alpha: 0.3,
-                      ),
-                      borderRadius: ProductBorderRadius.circularHigh30(),
-                    ),
-                    child: TextFormField(
-                      initialValue: currentDescription,
-                      onChanged: cubit.updateDescription,
-                      maxLength: maxChars,
-                      maxLines: 8,
-                      keyboardType: TextInputType.multiline,
-                      decoration: InputDecoration(
-                        hintText:
-                            "Write about what makes you unique, memorable experiences, or anything that would help others connect with you... (Optional)",
-                        hintStyle: Theme.of(context).textTheme.bodyLarge!
-                            .copyWith(color: ProductColors.instance.grey),
-                        border: InputBorder.none,
-                        counterText: "",
-                      ),
-                    ),
-                  ),
-
-                  // Alt Açıklama Metni
-                  Padding(
-                    padding: const ProductPadding.allLow(),
-                    child: Center(
+                    Align(
+                      alignment: Alignment.centerRight,
                       child: Text(
-                        "A thoughtful description is optional but helps create meaningful connections.",
+                        "${currentDescription.length}/$maxChars",
                         style: Theme.of(context).textTheme.bodySmall!.copyWith(
                           color: ProductColors.instance.grey,
                         ),
-                        textAlign: TextAlign.center,
                       ),
                     ),
-                  ),
-                ],
-              ),
+                    CustomSizedBox.getSmall025Seperator(context),
+                    Container(
+                      padding: const ProductPadding.allHigh(),
+                      decoration: BoxDecoration(
+                        color: ProductColors.instance.yellow.withValues(
+                          alpha: 0.3,
+                        ),
+                        borderRadius: ProductBorderRadius.circularHigh30(),
+                      ),
+                      child: TextFormField(
+                        initialValue: currentDescription,
+                        onChanged: cubit.updateDescription,
+                        maxLength: maxChars,
+                        maxLines: 8,
+                        keyboardType: TextInputType.multiline,
+                        decoration: InputDecoration(
+                          hintText:
+                              "Write about what makes you unique, memorable experiences, or anything that would help others connect with you... (Optional)",
+                          hintStyle: Theme.of(context).textTheme.bodyLarge!
+                              .copyWith(color: ProductColors.instance.grey),
+                          border: InputBorder.none,
+                          counterText: "",
+                        ),
+                      ),
+                    ),
 
-              CustomContinueButton(
-                onPressed: cubit.submitForm,
-                isDataValid: isDataValid,
-              ),
-            ],
+                    // Alt Açıklama Metni
+                    Padding(
+                      padding: const ProductPadding.allLow(),
+                      child: Center(
+                        child: Text(
+                          "A thoughtful description is optional but helps create meaningful connections.",
+                          style: Theme.of(context).textTheme.bodySmall!
+                              .copyWith(color: ProductColors.instance.grey),
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+
+                CustomContinueButton(
+                  onPressed: cubit.submitForm,
+                  isDataValid: isDataValid,
+                ),
+              ],
+            ),
           ),
         );
       },

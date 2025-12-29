@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:kartal/kartal.dart';
+import 'package:overheard/common/providers/setup_locator.dart';
 import 'package:overheard/common/routes/routes.dart';
 import 'package:overheard/features/login/cubit/login_cubit.dart';
 import 'package:overheard/features/login/cubit/login_state.dart';
 import 'package:overheard/features/login/widgets/login_actions_buttons.dart';
 import 'package:overheard/features/login/widgets/login_fields_column.dart';
+import 'package:overheard/features/settings/cubit/settings_cubit.dart';
 import 'package:overheard/product/constants/product_colors.dart';
 import 'package:overheard/product/constants/product_padding.dart';
 import 'package:overheard/product/constants/product_textsize.dart';
@@ -27,6 +29,7 @@ class LoginView extends StatelessWidget {
           if (state is LoginLoading) {
             _showLoadingDialog(context);
           } else if (state is LoginSuccess) {
+            context.read<SettingsCubit>().loadSettings();
             _navigateToHome(context);
           } else if (state is LoginError) {
             if (Navigator.canPop(context)) Navigator.pop(context);

@@ -15,6 +15,11 @@ class SettingsView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      final cubit = context.read<SettingsCubit>();
+      // Eğer içindeki kullanıcı o anki giriş yapanla eşleşmiyorsa veya null ise yükle
+      cubit.loadSettings();
+    });
     return BlocConsumer<SettingsCubit, SettingsState>(
       listener: (context, state) {
         if (state.actionTye == ActionTyes.success &&
